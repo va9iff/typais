@@ -1,4 +1,4 @@
-import {html, css, LitElement} from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js"
+import {html, css, LitElement, classMap} from "https://cdn.jsdelivr.net/gh/lit/dist@2/all/lit-all.min.js"
 
 class VLitElement extends LitElement {
 	createRenderRoot() {
@@ -9,4 +9,4 @@ class VLitElement extends LitElement {
 	} 
 }
 
-export {html, css, LitElement, VLitElement}
+export {html, css, LitElement, VLitElement, classMap}
