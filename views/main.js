@@ -1,4 +1,4 @@
-import { html, VLitElement } from "/lit.js"
+import { html, VLitElement } from "../lit.js"
 
 import "./tabs.js"
 

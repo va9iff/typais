@@ -1,4 +1,4 @@
-import { html, VLitElement, classMap } from "/lit.js"
+import { html, VLitElement, classMap } from "../lit.js"
 
 function getBachs() {
 	return ["informasiya təhlükəsizliyi", "informasiya texnologiyaları"]
