@@ -24,8 +24,20 @@ const subjects = {
 			"00924 - Verilənlərin strukturu və alqoritmlər",
 			"00932-B1 - Xarici dildə işgüzar və akademik kommunikasiya-3",
 		],
-		"sistem mühəndisliyi": ["design architectures", "math"],
-		"süni intellekt": ["math", "calculus", "plotting", "data analysis"],
+		"sistem mühəndisliyi": [
+			"00196 - Biznes informasiya sistemləri", 
+			"00234 - Diskret riyaziyyat",
+			"00406 - İnformasiyanın mühafizəsi üsulları vəvasitələri (proqram-texniki)",
+			"00498 - Konfidensiallıq və informasiya texnologiyaları",
+			"00671 - Politologiya",
+			"00825 - Zərərverici proqram təminatı və bərpa mühəndisliyi"],
+		"süni intellekt": [
+			"00005 - Azərbaycanın tarixi", 
+			"00073 - Xarici dildə işgüzar və akademik kommunikasiya-2", 
+			"00085 - İnformasiya təhlükəsizliyinə giriş", 
+			"00090 - Kriptoqrafiyanın əsasları",
+			"00105 - Riyazi analiz"
+			],
 	}
 
 function getSubjects(ixtisasName) {
