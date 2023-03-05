@@ -107,6 +107,7 @@ export class VTabs extends VLitElement {
 				</button>
 				<button class="tab sorgu" @click=${e=>alert("Sorğular yaxında əlavə olunacaq")}>Sorğu</button>
 				<button class=${classMap({tab:true, selected: this.minimized})} @click=${this.changeMinimize}>Yığcam</button>
+				<button class=${classMap({tab:true})} @click=${ e => window.goTo("login") }>Çıxış</button>
 			</div>
 			<div
 				class=${classMap({
@@ -181,8 +182,9 @@ export class VTabs extends VLitElement {
 					<br>
 					<label for="startDate">Başlanğıc Tarixi</label> <br>
 					<input type="date" id="startDate" name="startDate"
-					       value="2018-07-22"
-					       min="2018-01-01" max="2018-12-31"> <br>
+					       value="2020-07-22"
+					       min="1930-01-01" 
+					       max="2025-12-31"> <br>
 			       <br>
 					<label for="muallim">Müəllim</label> <br>
 					<input type="text" name="muallim" id="muallim" placeholder="Müəllimin Adı"> <br>
