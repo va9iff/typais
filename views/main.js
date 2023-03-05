@@ -5,7 +5,8 @@ import "./tabs.js"
 export class VMain extends VLitElement {
 	render() {
 		return html`
-			<v-tabs></v-tabs>
+		<img src="./img/header.png" alt="">
+		<v-tabs></v-tabs>
 		`
 	}
 	getFenns(ixts){
