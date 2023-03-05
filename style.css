@@ -99,7 +99,10 @@ select {
 v-main{
 	display: block;
 }
- body, v-main, v-tabs{
+ v-main{
+	background-color: #eee;
+}
+body {
 	background-color: #eee;
 }
 v-main > img{
