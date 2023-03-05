@@ -165,6 +165,8 @@ export class VTabs extends VLitElement {
 				})}
 			>
 				<form>
+					<label>${selectedFenn}</label> <br>
+					<br>
 					<label for="hours">Dərs Saatları</label> <br>
 					<input type="number" name="hours" id="hours" value=30 min=1> <br>
 					<br>
