@@ -96,9 +96,11 @@ select {
 	padding: 3px;
 }
 
+v-main{
+	display: block;
+}
  body, v-main, v-tabs{
 	background-color: #eee;
-
 }
 v-main > img{
 	width: 100%;
