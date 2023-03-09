@@ -3,7 +3,7 @@ import { html, VLitElement, classMap } from "../lit.js"
 import "./tabs.js"
 import "./login.js"
 
-window.atV = "login"
+window.atV = "tabs"
 
 export class VMain extends VLitElement {
 	render() {

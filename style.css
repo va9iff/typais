@@ -24,7 +24,8 @@ v-tabs {
 	padding: 0;
 }
 
-.tabCol {
+.tabCol, v-tabber {
+/*	border-right: 2px solid #2228;*/
 	display: flex;
 	flex-direction: column;
 	padding: 0 5px;
@@ -33,18 +34,23 @@ v-tabs {
 .tab {
 	background-color: #ddd;
 	border: 1px solid #999;
-	margin-bottom: 14px;
+	border: none;
+/*	margin-bottom: 14px;*/
 	transition: 200ms;
-	padding: 3px;
+/*	padding: 3px;*/
+	padding-right: 7px;
 	border-radius: 4px;
 	box-shadow: 0 0 0 #aaa;
 	color: #333;
 	text-align: left;
 	max-width: 300px;
+	margin-bottom: 10px;
+	padding: 7px 5px;
+	min-width: 70px;
 }
 
 .tab:hover {
-	background-color: #eee;
+	background-color: #e8e8e8;
 /*	transform: translateX(-5px);*/
 }
 
@@ -52,9 +58,50 @@ v-tabs {
 	border-color: #19f18a;
 }
 
+
+/*.highTab.selected {*/
+/*	margin-left: 10px;*/
+/*}*/
+
+.tabCol{
+	margin-right: 34px;
+	border-left: 1px solid #2222;
+}
+.co1{
+	border: none;
+}
+
+.tab {
+	position: relative;
+}
+
+.tab::after{
+	content: "";
+	position: absolute;
+/*	right: -9px;*/
+	left: 100%;
+	background-image: url("./img/arrow.png");
+/*	background-color: red;*/
+	opacity: 0;
+	transform: translateX(-10px) translateY(-50%);
+	transition: 300ms;
+	background-size: 100% 100%;
+	width: 24px;
+	height: 14px;
+	top: 50%;
+}
+.tab.selected::after{
+	transition: 500ms;
+	transform: translateX(5px) translateY(-50%);
+	opacity: 0.8;
+}
+
+.tab:focus,
 .tab.selected {
 	transform: translateX(10px);
-	box-shadow: -10px 0 0 #19f18a;
+/*	margin-right: 14px;*/
+/*	box-shadow: -10px 0 0 #19f18a;*/
+	background-color: #b3ffdb;
 }
 
 .tab.sorgu:active {
@@ -139,10 +186,10 @@ v-login > .blob {
 	position: absolute;
 	background-color: #eee;
 	padding: 40px;
-	border-radius: 39px;
-	padding: 113px 90px;
-	padding-top: 30px;
-	padding-bottom: 55px;
+	border-radius: 29px;
+	padding: 113px 30px;
+	padding-top: 20px;
+	padding-bottom: 15px;
 	color: #444;
 	right: 4%;
 	bottom: 4%;
@@ -151,7 +198,7 @@ v-login > .blob {
 .bigCaption {
 	font-size: 27px;
 	text-align: center;
-	margin-bottom: 35px;
+	margin-bottom: 5px;
 }
 
 .blob > form {

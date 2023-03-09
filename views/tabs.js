@@ -1,55 +1,15 @@
 import { html, VLitElement, classMap } from "../lit.js"
+import { getFaculties, getTeachers, getPane2Ixtisases } from "../api.js"
+// import {subjects} from "../dummyData.js"
 
-function getBachs() {
-	return ["informasiya təhlükəsizliyi", "informasiya texnologiyaları"]
-}
+import "./tabber.js"
 
-function getMasters() {
-	return ["sistem mühəndisliyi", "süni intellekt"]
-}
+let pane2 = html``
+let pane1 = html``
 
-const subjects = {
-		"informasiya təhlükəsizliyi": [
-			"00739_Rəqəmsal kommunikasiya",
-			"00341_Fəlsəfə",
-			"00480_Kompüter cinayət və məhkəmə ekspertizası",
-			"00751_Risklərin və insidentlərin idarə edilməsi",
-			"00923_Fl_Verilənlərin intellektual analizi",
-		],
-		"informasiya texnologiyaları": [
-			"00004 - Azərbaycan dilində işgüzar və akademik kommunikasiya",
-			"00072 - Ehtimal nəzəriyyəsi və riyazi statistika",
-			"00304 - Əməliyyat sistemləri",
-			"00388 - İnformasiya axtarışının üsul və vasitələri",
-			"00924 - Verilənlərin strukturu və alqoritmlər",
-			"00932-B1 - Xarici dildə işgüzar və akademik kommunikasiya-3",
-		],
-		"sistem mühəndisliyi": [
-			"00196 - Biznes informasiya sistemləri", 
-			"00234 - Diskret riyaziyyat",
-			"00406 - İnformasiyanın mühafizəsi üsulları vəvasitələri (proqram-texniki)",
-			"00498 - Konfidensiallıq və informasiya texnologiyaları",
-			"00671 - Politologiya",
-			"00825 - Zərərverici proqram təminatı və bərpa mühəndisliyi"],
-		"süni intellekt": [
-			"00005 - Azərbaycanın tarixi", 
-			"00073 - Xarici dildə işgüzar və akademik kommunikasiya-2", 
-			"00085 - İnformasiya təhlükəsizliyinə giriş", 
-			"00090 - Kriptoqrafiyanın əsasları",
-			"00105 - Riyazi analiz"
-			],
-	}
-
-function getSubjects(ixtisasName) {
-	return subjects[ixtisasName]
-}
-
-let fennler = []
-let ixtisaslar = []
-
-let selectedIxtisas = ""
-let selectedFenn = ""
-let topType = ""
+let selectedPane0 = ""
+let selectedPane1 = ""
+let selectedPane2 = ""
 
 let yuk = null
 
@@ -61,157 +21,195 @@ export class VTabs extends VLitElement {
 		super()
 		this.minimized = false
 	}
-	updateBachs(e) {
-		this.minimized = false
-		topType = "bach"
-		selectedIxtisas = ""
-		selectedFenn = ""
-		yuk = null
-		ixtisaslar = getBachs()
-		fennler = []
-		this.requestUpdate()
-	}
-	updateMasters(e) {
-		this.minimized = false
-		topType = "master"
-		selectedIxtisas = ""
-		selectedFenn = ""
-		yuk = null
-		ixtisaslar = getMasters()
-		fennler = []
+	pane1teachers(e) {
+		selectedPane0 = "teachers"
 		this.requestUpdate()
 	}
 	changeMinimize(e) {
 		this.minimized = !this.minimized
 	}
 	render() {
+
+		console.log(selectedPane0 == "faculties", selectedPane0 == "faculties" ? ["true"] : ["false"])
+
 		return html`
 			<div class="tabCol co1">
 				<button
 					class=${classMap({
 						tab: true,
-						selected: topType == "bach",
+						selected: selectedPane0 == "faculties",
+						highTab: true,
 					})}
-					@click=${this.updateBachs}
+					@click=${e=>{
+						selectedPane0 = "faculties"
+						selectedPane1 = ""
+						selectedPane2 = ""
+						this.requestUpdate()
+					}}
 				>
-					Bakalavr
+					Tədris yükünün daxil <br />
+					olduğu fakultələ
 				</button>
 				<button
 					class=${classMap({
 						tab: true,
-						selected: topType == "master",
+						selected: selectedPane0 == "teachers",
 					})}
-					@click=${this.updateMasters}
+					@click=${e=>{
+						selectedPane0 = "teachers"
+						selectedPane1 = ""
+						selectedPane2 = ""
+						this.requestUpdate()
+					}}
 				>
-					Magistr
+					Müəllimlər
 				</button>
-				<button class="tab sorgu" @click=${e=>alert("Sorğular yaxında əlavə olunacaq")}>Sorğu</button>
-				<button class=${classMap({tab:true, selected: this.minimized})} @click=${this.changeMinimize}>Yığcam</button>
-				<button class=${classMap({tab:true})} @click=${ e => window.goTo("login") }>Çıxış</button>
+				<button class="tab" }>Meyarlar</button>
+				<button
+					class=${classMap({
+						tab: true,
+						selected: selectedPane0 == "ixtisases",
+					})}
+					@click=${e=>{
+						selectedPane0 = "ixtisases"
+						selectedPane1 = ""
+						selectedPane2 = ""
+						this.requestUpdate()
+					}}
+				>ixtisaslar
+				</button>
+				<button class="tab">Sorğu</button>
+				<button
+					class=${classMap({ tab: true, selected: this.minimized })}
+					@click=${this.changeMinimize}
+				>
+					Yığcam
+				</button>
+				<button
+					class=${classMap({ tab: true })}
+					@click=${e => window.goTo("login")}
+				>
+					Çıxış
+				</button>
 			</div>
+
 			<div
 				class=${classMap({
 					tabCol: true,
-					hidden: this.minimized,
+					// hidden: this.minimized || !pane1.length,
+					// hidden: selectedPane0 != "faculties" 
 				})}
 			>
-				${ixtisaslar.map(
-					ixts =>
-						html`
-							<button
-								class=${classMap({
-									ixtisas: true,
-									tab: true,
-									selected: selectedIxtisas == ixts,
-								})}
-								@click=${e => {
-									this.getFenns(ixts)
-								}}
-							>
-								${ixts}
-							</button>
-						`
-				)}
+			<v-tabber 
+			.data = ${
+				selectedPane0 == "faculties" ? {
+						list: getFaculties(),
+						itemClick: item=> {
+							selectedPane1 = item
+							selectedPane2 = ""
+							this.requestUpdate()
+						},
+						itemShow: item => item,
+						selected: item => selectedPane1 == item,
+					} : selectedPane0 == "teachers" ? 
+					{
+						selected: teacher => selectedPane1.name == teacher.name,
+						list: getTeachers(),
+						itemShow: teacher => teacher.name,
+						itemClick: teacher => {
+							selectedPane1 = teacher
+							this.requestUpdate()
+						}
+
+					} : selectedPane0 == "ixtisases" ? {
+						list: getPane2Ixtisases("aldsj")
+					} : 
+					{
+						list: []
+					}
+				}				
+			} ></v-tabber>
 			</div>
+
 			<div
 				class=${classMap({
 					tabCol: true,
 					fenn: true,
-					hidden: this.minimized,
+					// hidden: this.minimized || !pane2.length,
 				})}
 			>
-				${fennler.map(
-					fenn =>
-						html`<button
-							class=${classMap({
-								tab: true,
-								selected: fenn == selectedFenn,
-							})}
-							@click=${e => {
-								selectedFenn = fenn
-								this.getYuk(fenn)
-							}}
-						>
-							${fenn}
-						</button>`
-				)}
+				${selectedPane0 == "teachers"  && selectedPane1 ? html`<p>${selectedPane1.name} adlı müəllimin tədris yükü <br><br><br>
+		<i>Elmi dərəcəsi - ${selectedPane1.degree}</i>
+		</p>` : selectedPane0 == "faculties" && selectedPane1  ? 
+		html`<v-tabber .data=${{
+					list: getPane2Ixtisases(selectedPane1),
+					selected: p1=>selectedPane1==p1,
+					itemShow: ixtisas => `${selectedPane1} fakültəsi ${ixtisas} nömrəli ixtisas`,
+					itemClick: ixtisas => {
+						selectedPane2 = ixtisas
+						this.requestUpdate()
+					}
+				}}></v-tabber>` : ''}
 			</div>
 			<div
 				class=${classMap({
 					tabCol: true,
 					yukContent: true,
-					hidden: !yuk
+					hidden: !(selectedPane2 && selectedPane1),
 					// fenn: true,
 					// hidden: this.minimized,
 				})}
 			>
 				<form>
-					<label>${selectedFenn}</label> <br>
-					<br>
-					<label for="hours">Dərs Saatları</label> <br>
-					<input type="number" name="hours" id="hours" value=30 min=1> <br>
-					<br>
-					<label for="kredit">Krediti</label> <br>
-					<input type="number" name="kredit" id="kredit" value=1 min=1> <br>
-					<br>
-					<label for="tform">Tədris Forması</label> <br>
+					<label>${selectedPane2}</label> <br />
+					<br />
+					<label for="hours">Dərs Saatları</label> <br />
+					<input type="number" name="hours" id="hours" value="30" min="1" />
+					<br />
+					<br />
+					<label for="kredit">Krediti</label> <br />
+					<input type="number" name="kredit" id="kredit" value="1" min="1" />
+					<br />
+					<br />
+					<label for="tform">Tədris Forması</label> <br />
 					<select name="tform" id="tform">
-					  <option value="eyani">Əyani</option>
-					  <option value="qiyabi">Qiyabi</option>
-					</select> <br>
-					<br>
-					<label for="startDate">Başlanğıc Tarixi</label> <br>
-					<input type="date" id="startDate" name="startDate"
-					       value="2020-07-22"
-					       min="1930-01-01" 
-					       max="2025-12-31"> <br>
-			       <br>
-					<label for="muallim">Müəllim</label> <br>
-					<input type="text" name="muallim" id="muallim" placeholder="Müəllimin Adı"> <br>
+						<option value="eyani">Əyani</option>
+						<option value="qiyabi">Qiyabi</option>
+					</select>
+					<br />
+					<br />
+					<label for="startDate">Başlanğıc Tarixi</label> <br />
+					<input
+						type="date"
+						id="startDate"
+						name="startDate"
+						value="2020-07-22"
+						min="1930-01-01"
+						max="2025-12-31"
+					/>
+					<br />
+					<br />
+					<label for="muallim">Müəllim</label> <br />
+					<input
+						type="text"
+						name="muallim"
+						id="muallim"
+						placeholder="Müəllimin Adı"
+					/>
+					<br />
 
-
-
-					<br>
-					<button type = "submit" class="tab submitButton">Göndər</button>
+					<br />
+					<button type="submit" class="tab submitButton">Göndər</button>
 				</form>
 			</div>
 		`
 	}
-	getFenns(ixts) {
-		selectedIxtisas = ixts
-		selectedFenn = ""
-		yuk = null
-		fennler = getSubjects(ixts)
-		this.requestUpdate()
-	}
-	getYuk(fenn) {
-		selectedFenn = fenn
-		yuk = null
-		yuk = {someProp: "mono"}
-		console.log(selectedFenn == fenn)
-		this.requestUpdate()
-		console.log("fasd")
-	}
+	// getYuk(fenn) {
+		// selectedPane2 = fenn
+		// yuk = null
+		// yuk = { someProp: "mono" }
+		// this.requestUpdate()
+	// }
 }
 
 VTabs.tag = "v-tabs"
