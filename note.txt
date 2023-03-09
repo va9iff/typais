@@ -1,1 +1,4 @@
 hər bir fakultənin ixtisası və ona uyğun tədris yükü varr.
+
+domens:
+	

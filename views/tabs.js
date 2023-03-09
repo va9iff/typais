@@ -3,6 +3,7 @@ import { getFaculties, getTeachers, getPane2Ixtisases } from "../api.js"
 // import {subjects} from "../dummyData.js"
 
 import "./tabber.js"
+import "./domens.js"
 
 let pane2 = html``
 let pane1 = html``
@@ -96,11 +97,12 @@ export class VTabs extends VLitElement {
 			<div
 				class=${classMap({
 					tabCol: true,
+					hidden: !(selectedPane0 == "faculties" || selectedPane0 == "ixtisases" )
 					// hidden: this.minimized || !pane1.length,
 					// hidden: selectedPane0 != "faculties" 
 				})}
 			>
-			<v-tabber 
+			${html`<v-tabber 
 			.data = ${
 				selectedPane0 == "faculties" ? {
 						list: getFaculties(),
@@ -111,24 +113,13 @@ export class VTabs extends VLitElement {
 						},
 						itemShow: item => item,
 						selected: item => selectedPane1 == item,
-					} : selectedPane0 == "teachers" ? 
-					{
-						selected: teacher => selectedPane1.name == teacher.name,
-						list: getTeachers(),
-						itemShow: teacher => teacher.name,
-						itemClick: teacher => {
-							selectedPane1 = teacher
-							this.requestUpdate()
-						}
-
 					} : selectedPane0 == "ixtisases" ? {
 						list: getPane2Ixtisases("aldsj")
 					} : 
 					{
 						list: []
 					}
-				}				
-			} ></v-tabber>
+				} ></v-tabber>`}
 			</div>
 
 			<div
@@ -138,18 +129,12 @@ export class VTabs extends VLitElement {
 					// hidden: this.minimized || !pane2.length,
 				})}
 			>
-				${selectedPane0 == "teachers"  && selectedPane1 ? html`<p>${selectedPane1.name} adlı müəllimin tədris yükü <br><br><br>
-		<i>Elmi dərəcəsi - ${selectedPane1.degree}</i>
-		</p>` : selectedPane0 == "faculties" && selectedPane1  ? 
-		html`<v-tabber .data=${{
-					list: getPane2Ixtisases(selectedPane1),
-					selected: p1=>selectedPane1==p1,
-					itemShow: ixtisas => `${selectedPane1} fakültəsi ${ixtisas} nömrəli ixtisas`,
-					itemClick: ixtisas => {
-						selectedPane2 = ixtisas
-						this.requestUpdate()
-					}
-				}}></v-tabber>` : ''}
+				${
+					selectedPane0 == "teachers" ? 
+					html`<!--- <p>${selectedPane1.name} adlı müəllimin tədris yükü <br><br><br>
+					<i>Elmi dərəcəsi - ${selectedPane1.degree}</i> </p> ---> ...yenilənir. Tamamlandıqda xəbər veriləcək.` 
+					: selectedPane0 == "faculties" && selectedPane1 ? 
+					html`<v-domens></v-domens>` : html``}
 			</div>
 			<div
 				class=${classMap({

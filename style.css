@@ -239,3 +239,36 @@ v-login > .blob {
 .semiOpaceHeader {
 	opacity: 0.8;
 }
+
+v-domens .fpiece {
+	margin-bottom: 14px;
+/*background-color: red;*/
+	display: flex;
+	flex-direction: column;
+}
+
+.domenCols {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+
+v-domens .docol {
+	display: flex;
+	flex-direction: column;
+}
+
+button.list {
+	border: 1px solid #222d;
+}
+
+/*v-domens > div > * {*/
+/*	display: inline;*/
+/*}*/
+
+/*.formPiece{*/
+/*	display: flex;*/
+/*	flex-direction: column;*/
+/*	gap: 0;*/
+/*	margin-bottom: 14px;*/
+/*}*/
