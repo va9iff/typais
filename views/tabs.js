@@ -68,7 +68,12 @@ export class VTabs extends VLitElement {
 				>
 					Müəllimlər
 				</button>
-				<button class="tab" @click=${e=>{
+				<button class="tab" 
+				class=${classMap({
+						tab: true,
+						selected: selectedPane0 == "meyars",
+					})}
+				@click=${e=>{
 					console.log()
 					selectedPane0 = "meyars"
 					selectedPane1 = ""
