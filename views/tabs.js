@@ -78,7 +78,7 @@ export class VTabs extends VLitElement {
 						selectedPane2 = ""
 						this.requestUpdate()
 					}}
-				>ixtisaslar
+				>Kafedranın dərs yükü
 				</button>
 				<button class="tab">Sorğu</button>
 				<button
