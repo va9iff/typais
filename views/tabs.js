@@ -4,6 +4,7 @@ import { getFaculties, getTeachers, getPane2Ixtisases } from "../api.js"
 
 import "./tabber.js"
 import "./domens.js"
+import "./teacher.js"
 
 let pane2 = html``
 let pane1 = html``
@@ -131,10 +132,10 @@ export class VTabs extends VLitElement {
 			>
 				${
 					selectedPane0 == "teachers" ? 
-					html`<!--- <p>${selectedPane1.name} adlı müəllimin tədris yükü <br><br><br>
-					<i>Elmi dərəcəsi - ${selectedPane1.degree}</i> </p> ---> ...yenilənir. Tamamlandıqda xəbər veriləcək.` 
-					: selectedPane0 == "faculties" && selectedPane1 ? 
-					html`<v-domens></v-domens>` : html``}
+					html`<v-teacher></v-teacher>` : 
+					selectedPane0 == "faculties" && selectedPane1 ? 
+					html`<v-domens></v-domens>` : html``
+				}
 			</div>
 			<div
 				class=${classMap({
