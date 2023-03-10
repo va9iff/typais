@@ -22,7 +22,7 @@ export class VTabs extends VLitElement {
 	}
 	constructor() {
 		super()
-		this.dils = [{lang:"en", can:true}, {lang:"ru", can: false}, {lang:"az", can: true}]
+		this.dils = []
 		this.minimized = false
 	}
 	pane1teachers(e) {
