@@ -263,7 +263,11 @@ button.list {
 	border: 1px solid #222d;
 }
 
-v-teacher .dils{
+v-dils label{
+	font-size: 18px;
+
+}
+v-dils{
 	gap: 7px;
 	display: flex;
 	flex-direction: column;
@@ -271,7 +275,7 @@ v-teacher .dils{
 	position: relative;
 }
 
-v-teacher .dil {
+.dil {
 	display: flex;
 	flex-direction: row;
 	gap: 7px;
@@ -286,7 +290,7 @@ v-teacher .dil {
 /*	background-color: red;*/
 }
 
-v-teacher .dil > button{
+.dil > button{
 	min-width: 28px;
 	border-radius: 7px;
 	border-width: 1px;

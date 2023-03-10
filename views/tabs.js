@@ -5,6 +5,7 @@ import { getFaculties, getTeachers, getPane2Ixtisases } from "../api.js"
 import "./tabber.js"
 import "./domens.js"
 import "./teacher.js"
+import "./dils.js"
 
 let pane2 = html``
 let pane1 = html``
@@ -21,6 +22,7 @@ export class VTabs extends VLitElement {
 	}
 	constructor() {
 		super()
+		this.dils = [{lang:"en", can:true}, {lang:"ru", can: false}, {lang:"az", can: true}]
 		this.minimized = false
 	}
 	pane1teachers(e) {
@@ -66,7 +68,13 @@ export class VTabs extends VLitElement {
 				>
 					Müəllimlər
 				</button>
-				<button class="tab" }>Meyarlar</button>
+				<button class="tab" @click=${e=>{
+					console.log()
+					selectedPane0 = "meyars"
+					selectedPane1 = ""
+					selectedPane2 = ""
+					this.requestUpdate()
+				}}>Meyarlar</button>
 				<button
 					class=${classMap({
 						tab: true,
@@ -134,7 +142,10 @@ export class VTabs extends VLitElement {
 					selectedPane0 == "teachers" ? 
 					html`<v-teacher></v-teacher>` : 
 					selectedPane0 == "faculties" && selectedPane1 ? 
-					html`<v-domens></v-domens>` : html``
+					html`<v-domens></v-domens>` : 
+					selectedPane0 == "meyars" ? 
+					html`<v-dils .dils=${this.dils}></v-dils>` :
+					html``
 				}
 			</div>
 			<div
