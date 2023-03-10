@@ -50,7 +50,7 @@ export class VTabs extends VLitElement {
 					}}
 				>
 					Tədris yükünün daxil <br />
-					olduğu fakultələ
+					olduğu fakultələr
 				</button>
 				<button
 					class=${classMap({
