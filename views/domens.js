@@ -2,6 +2,19 @@ import { html, VLitElement, classMap } from "../lit.js"
 
 export class VDomens extends VLitElement {
 	static properties = {
+		muhazire: {},
+		mesqele: {},
+		lab: {},
+		meslehet: {},
+		exam: {},
+	}
+	constructor(){
+		super()
+		this.muhazire = 0
+		this.mesqele = 0
+		this.lab = 0
+		this.meslehet = 0
+		this.exam = 0
 	}
 	render(){
 		return html`
@@ -43,25 +56,30 @@ export class VDomens extends VLitElement {
 		<div class="docol">
 
  			<div class = "fpiece">
+				<label>Cəm</label>
+				<input type="text" disabled value = ${+this.muhazire + +this.mesqele + +this.lab + +this.meslehet + +this.exam}> 
+ 			</div>
+ 			<div class = "fpiece">
 				<label for="muhazire">Muhazirə</label>
-				<input id="muhazire" type="number"> 
+				<input id="muhazire" value = ${this.muhazire} @input =${e=>this.muhazire =e.target.value } type="number"> 
  			</div>
 
  			<div class = "fpiece">
 				<label for="mesqele">Məşğələ</label>
-				<input id="mesqele" type="number"> 
+				<input id="mesqele" value = ${this.mesqele} @input = ${e=> this.mesqele =e.target.value} type="number">
  			</div>
  			<div class = "fpiece">
 				<label for="lab">Labaratoriya</label>
-				<input id="lab" type="number"> 
+				<input id="lab" value = ${this.lab} @input = ${e=> this.lab =e.target.value} type="number"> 
  			</div>
  			<div class = "fpiece">
 				<label for="meslehet">Məsləhət</label>
-				<input id="meslehet" type="number"> 
+				<input id="meslehet" value = ${this.meslehet} @input = ${e=> this.meslehet =e.target.value} type="number"> 
+
  			</div>
  			<div class = "fpiece">
 				<label for="exam">İmtahan</label>
-				<input id="exam" type="number"> 
+				<input id="exam" value = ${this.exam} @input = ${e=> this.exam =e.target.value} type="number"> 
  			</div>
 		</div>
 		</div>
