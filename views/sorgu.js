@@ -2,14 +2,10 @@ import { html, VLitElement, classMap } from "../lit.js"
 
 export class VSorgu extends VLitElement {
 	render(){
-		return `
+		return html`
+			<v-dils></v-dils>
 		`
 	}
 }
 
 VSorgu.tag = 'v-sorgu'
-
-
-tag.main = props => v`
-	
-`

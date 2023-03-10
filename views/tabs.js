@@ -6,6 +6,7 @@ import "./tabber.js"
 import "./domens.js"
 import "./teacher.js"
 import "./dils.js"
+import "./sorgu.js"
 
 let pane2 = html``
 let pane1 = html``
@@ -22,7 +23,6 @@ export class VTabs extends VLitElement {
 	}
 	constructor() {
 		super()
-		this.dils = []
 		this.minimized = false
 	}
 	pane1teachers(e) {
@@ -79,7 +79,7 @@ export class VTabs extends VLitElement {
 					selectedPane1 = ""
 					selectedPane2 = ""
 					this.requestUpdate()
-				}}>Meyarlar</button>
+				}}>Sorğu (Meyarlar)</button>
 				<button
 					class=${classMap({
 						tab: true,
@@ -93,7 +93,18 @@ export class VTabs extends VLitElement {
 					}}
 				>Kafedranın dərs yükü
 				</button>
-				<button class="tab">Sorğu</button>
+				<!-- <button 
+				class = ${
+					classMap({	
+						tab: true,
+						selected: selectedPane0 == "sorgu"})
+				}
+				@click = ${
+					e=>{
+						selectedPane0 = "sorgu"
+						this.requestUpdate()
+					}
+				}>Sorğu</button> -->
 				<button
 					class=${classMap({ tab: true, selected: this.minimized })}
 					@click=${this.changeMinimize}
@@ -149,7 +160,9 @@ export class VTabs extends VLitElement {
 					selectedPane0 == "faculties" && selectedPane1 ? 
 					html`<v-domens></v-domens>` : 
 					selectedPane0 == "meyars" ? 
-					html`<v-dils .dils=${this.dils}></v-dils>` :
+					html`<v-sorgu></v-sorgu>` :
+					// selectedPane0 == "sorgu" ?
+					// html`<v-sorgu></v-sorgu>` :
 					html``
 				}
 			</div>

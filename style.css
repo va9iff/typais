@@ -309,3 +309,11 @@ v-dils{
 /*	gap: 0;*/
 /*	margin-bottom: 14px;*/
 /*}*/
+
+.rmbtn {
+	background-color: #f86666;
+	padding: 4px 14px;
+	border-radius: 3px;
+	border: none;
+	text-align: right;
+}

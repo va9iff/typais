@@ -6,6 +6,10 @@ import "./login.js"
 window.atV = "tabs"
 
 export class VMain extends VLitElement {
+	constructor(){
+		super()
+		window.update = (...arg) => this.update(...arg)
+	}
 	render() {
 		return html`
 		<img src="./img/header.png" alt="" class=${classMap({
