@@ -19,19 +19,19 @@ let yuk = null
 
 export class VTabs extends VLitElement {
 	static properties = {
-		minimized: {},
+		// minimized: {},
 	}
 	constructor() {
 		super()
-		this.minimized = false
+		// this.minimized = false
 	}
 	pane1teachers(e) {
 		selectedPane0 = "teachers"
 		this.requestUpdate()
 	}
-	changeMinimize(e) {
-		this.minimized = !this.minimized
-	}
+	// changeMinimize(e) {
+		// this.minimized = !this.minimized
+	// }
 	render() {
 
 		console.log(selectedPane0 == "faculties", selectedPane0 == "faculties" ? ["true"] : ["false"])
@@ -106,12 +106,6 @@ export class VTabs extends VLitElement {
 					}
 				}>Sorğu</button> -->
 				<button
-					class=${classMap({ tab: true, selected: this.minimized })}
-					@click=${this.changeMinimize}
-				>
-					Yığcam
-				</button>
-				<button
 					class=${classMap({ tab: true })}
 					@click=${e => window.goTo("login")}
 				>
@@ -158,7 +152,7 @@ export class VTabs extends VLitElement {
 					selectedPane0 == "teachers" ? 
 					html`<v-teacher></v-teacher>` : 
 					selectedPane0 == "faculties" && selectedPane1 ? 
-					html`<v-domens></v-domens>` : 
+					html`<v-domens .listLink=${"./pdfs/Mühəndislik_2022-2023.pdf"}></v-domens>` : 
 					selectedPane0 == "meyars" ? 
 					html`<v-sorgu></v-sorgu>` :
 					// selectedPane0 == "sorgu" ?

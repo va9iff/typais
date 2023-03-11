@@ -14,7 +14,7 @@ export class VTabber extends VLitElement {
 	itemShow(item){
 		return item
 	}
-	itemClick(item){
+	itemClick(item, e, that){
 		console.log('clicked', item)
 	}
 	render(){
@@ -27,12 +27,12 @@ export class VTabber extends VLitElement {
 								class=${classMap({
 									tab: true,
 									selected: this.selected == item || this.data.selected?.(item),
-									oL :console.log(this.selected == item, this.selected, item)
+									// oL :console.log(this.selected == item, this.selected, item)
 								})}
 								@click=${e=>
 								{
 									this.selected = item
-									this.data.itemClick?.(item) || this.itemClick(item)
+									this.data.itemClick?.(item, e, this) || this.itemClick(item, e, this)
 									this.requestUpdate()
 								}
 							}

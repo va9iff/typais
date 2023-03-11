@@ -12,10 +12,15 @@ export class VMain extends VLitElement {
 	}
 	render() {
 		return html`
-		<img src="./img/header.png" alt="" class=${classMap({
+		<div class="header">
+			<img class="nazirlik" src="./img/elm ve etehsil nazirliyi.png" alt="">
+			<p>Tədris Yükünün Paylanması AİS</p>
+			<img class="unec" src="./img/unec2cut.png" alt="">
+		</div>
+		<!-- <img src="./img/header.png" alt="" class=${classMap({ 
 				header:true,
 				semiOpaceHeader: window.atV == "login"
-			})}>
+			})}> -->
 		${window.atV == "tabs" ? html`<v-tabs></v-tabs>` : ""}
 		${window.atV == "login" ? html`<v-login></v-login>` : ""}
 		`

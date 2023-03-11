@@ -152,10 +152,37 @@ v-main{
 body {
 	background-color: #eee;
 }
-v-main > img.header{
+.header>p{
+	display: flex;
+	align-items: center;
+	min-height: 50px;
+	word-wrap: wrap;
+/*	margin-left: 7rem;*/
+	font-family: sans-serif;
+	color: #444;
+	font-weight: 244;
+	font-size: 20px;
+	min-height: 50px;
+/*	background-color: red;*/
+}
+.header{
+	align-items: center;
+	justify-content: center;
+	background-color: #eee;
+	display: flex;
 	width: 100%;
 	z-index: 9999;
 	position: relative;
+}
+.header > .nazirlik {
+	position: absolute;
+	height: 100%;
+	left: 24px;
+}
+.header > .unec {
+	position: absolute;
+	height: 100%;
+	right: 24px;
 }
 
 /* - - - - - - - - - - -  */
