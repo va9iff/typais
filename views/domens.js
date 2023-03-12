@@ -291,7 +291,7 @@ export class VDomens extends VLitElement {
 			<button @click = ${e=>{
 				this.fresh()
 				this.requestUpdate()
-			}} class="tab">Göndər</button>
+			}} class="btn">Göndər</button>
 			<a class="tab list" href=${this.listLink} target="blank"
 				>List</a
 			>

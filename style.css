@@ -20,6 +20,25 @@ v-tabs {
 	padding: 17px;
 }
 
+button.btn {
+	background-color: #ddd;
+	border: none;
+	transition: 200ms;
+	color: #333;
+	text-align: center;
+	padding: 7px;
+	border-radius: 4px;
+	max-width: 300px;
+	margin: 10px;
+}
+button.btn:hover {
+	background-color: #e8e8e8;
+}
+button.btn:active{
+	transition: none;
+	box-shadow: 0 0 0 4px #19f18a;
+}
+
 .co1{
 	padding: 0;
 }
@@ -117,6 +136,7 @@ v-tabs {
 input {
 	border-radius: 4px;
 	border: 1px solid #999;
+	padding: 1px;
 }
 
 .submitButton{
@@ -339,8 +359,26 @@ v-dils{
 
 .rmbtn {
 	background-color: #f86666;
-	padding: 4px 14px;
+	padding: 4px 7px;
 	border-radius: 3px;
 	border: none;
-	text-align: right;
+	transition: 300ms;
+}
+.rmbtn:hover {
+	transform: scale(0.8);
+}
+.rmbtn:active {
+	transition: 0ms;
+	transform: scale(2);
+/*	opacity: 0.0;*/
+	background-color: #f8666600;
+	border-radius: 50%;
+
+}
+
+.ishyer {
+	margin-bottom: 12px;
+	border: 2px solid #2222;
+	padding: 13px;
+	border-radius: 8px;
 }
