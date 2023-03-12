@@ -15,7 +15,7 @@ export class VMain extends VLitElement {
 		<div class="header">
 			<img class="nazirlik" src="./img/elm ve etehsil nazirliyi.png" alt="">
 			<p>Tədris Yükünün Paylanması AİS</p>
-			<img class="unec" src="./img/unec2cut.png" alt="">
+			<img class="unec" src="./img/unec fil fit.png" alt="">
 		</div>
 		<!-- <img src="./img/header.png" alt="" class=${classMap({ 
 				header:true,
