@@ -83,10 +83,6 @@ export class VTeacher extends VLitElement {
 						</select>
 					</div>
 					<div class="fpiece">
-						<label for="mad">Elmi adı</label>
-						<input id="mad" type="text" />
-					</div>
-					<div class="fpiece">
 						<label for="ead">Elmi adı/Dərəcəsi</label>
 						<select id="ead">
 							<option value="laborant">Laborant</option>
